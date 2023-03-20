@@ -63,7 +63,8 @@ export const cartReducer = createReducer(
                    s.quantity = s.quantity -1
                 }
                 return s
-            })
+            }).filter((s:any)=>s.quantity>0)
+            
             if(bool==false){
                 return [...state]
             }

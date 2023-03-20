@@ -1,5 +1,5 @@
 <div class="nav-con">
-    <h1>Shoppie</h1>
+    <h1 (click) = 'onRedirect()'>Shoppie</h1>
     <ul>
         <li><a [routerLink]="['']">Home</a></li>
         <li><a [routerLink]="['/cart']">Cart</a><span class="cartNum">{{cartCount?cartCount:0}}</span></li>

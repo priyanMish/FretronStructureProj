@@ -1,6 +1,17 @@
+
+.container{
+    padding-top: 50px
+}
+
 .cartDataHolder{
-    padding: 50px;
     display: flex;
     justify-content: space-between;
     text-align: left;
+    margin: 15px 50px;
+}
+
+.noCartHead{
+    text-align: center;
+    width: 100%;
+
 }

@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   
 
 
-constructor(private cartStore: Store<{cart:any}>){
+constructor(private cartStore: Store<{cart:any}>,private route:Router){
 
 }
 
@@ -35,5 +36,10 @@ ngOnChanges(changes: SimpleChanges): void {
   //   this.cartCount = data.length
   // })
 }
+
+onRedirect(){
+ this.route.navigate([''])
+}
+
 
 }

@@ -13,8 +13,6 @@ export class CartComponent implements OnInit {
     this.cartData = data;
   })
 
- 
-     
   constructor(private store:Store<{cart:any}>){
 
   }
