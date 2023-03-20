@@ -10,7 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreEffects } from './store/effects/store.effects';
 
-import {cartReducer, storeReducer} from './store/reducers/store.reducer'
+import {cartReducer, storeReducer} from './store/reducers/store.reducer';
+import { CartComponent } from './components/cart/cart.component'
 
 
 
@@ -18,7 +19,8 @@ import {cartReducer, storeReducer} from './store/reducers/store.reducer'
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

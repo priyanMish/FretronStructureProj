@@ -1,0 +1,7 @@
+<div class="container">
+    <h1 *ngIf="cartData.length==0">No items in cart</h1>
+    <div class="cartDataHolder" *ngFor="let item of cartData">
+        <p>{{item.title}}</p> <span>Quantity:{{item.quantity}}</span>
+    </div>
+
+</div>
