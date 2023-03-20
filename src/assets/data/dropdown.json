@@ -1,0 +1,26 @@
+[
+    {
+     "id":1,
+     "name":"Hisar"
+    },
+    {
+        "id":2,
+        "name":"Kaithal"
+       },
+       {
+        "id":3,
+        "name":"Jalkhal"
+       },
+       {
+        "id":4,
+        "name":"Bucho"
+       },
+       {
+        "id":5,
+        "name":"Bathinda"
+       },
+       {
+        "id":6,
+        "name":"Manesar"
+       }
+]

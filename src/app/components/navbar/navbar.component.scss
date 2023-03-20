@@ -1,0 +1,49 @@
+.nav-con{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #28282B;
+    color: whitesmoke;
+    padding: 15px 25px 15px 25px;
+
+    h1{
+        cursor: pointer;
+        margin-left: 20px;
+        transition: all 0.2s ease-in;
+        &:hover{
+            scale: 1.2;
+        }
+    }
+
+    ul{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-right: 50px;
+        li{
+            list-style: none;
+             margin-right: 10px;
+             margin-left: 10px;
+             font-size: 20px;
+             transition: all 0.2s ease-in;
+             &:hover{
+                scale: 1.2;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+             }
+
+             .cartNum{
+                display: inline-block;
+                background-color: red;
+                border-radius: 50%;
+                height: 20px;
+                width: 20px;
+                font-size: 15px;
+                padding: 2px 1px 2px 1px;
+             }
+            a{
+                text-decoration: none;
+                color: whitesmoke;
+            }
+        }
+    }
+}
