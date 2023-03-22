@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { BehaviorSubject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { BehaviorSubject, debounceTime, distinctUntilChanged ,exhaustMap,switchMap} from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -25,7 +25,11 @@ export class DashboardHeaderComponent implements OnInit {
        this.searchInput.next(event.target.value)
        this.searchInput.pipe(
         debounceTime(1500),
-         distinctUntilChanged()   
-       ).subscribe((value:any)=>{this.searchValue.emit(value)})
+         distinctUntilChanged(),
+           
+       ).subscribe((value:any)=>{
+        console.log(value)
+        this.searchValue.emit(value)
+      })
   }
 }

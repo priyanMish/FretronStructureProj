@@ -3,5 +3,11 @@
     <div  class="cartDataHolder" *ngFor="let item of cartData" >
         <p>{{item.title}}</p> <span>Quantity:{{item.quantity}}</span>
     </div>
+</div>
 
+
+
+<div class="container-race">
+    <button class="btn" (click)="onGetSalary()">Get salary</button>
+    <button class=" btn" (click)="onGetName()"> Get Name</button>
 </div>

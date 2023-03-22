@@ -4,7 +4,7 @@ import { Observable, of, forkJoin } from "rxjs";
 import { Action } from "@ngrx/store";
 import { switchMap, map, catchError, tap ,exhaustMap} from "rxjs/operators";
 import { DataService } from "src/app/data.service";
-import { getData,getDataSuccess,getDataFailure } from "../actions/store.action";
+import { getData,getDataSuccess,getDataFailure,getJsonData,getJsonDataSuccess } from "../actions/store.action";
 
 
 @Injectable()
@@ -19,11 +19,26 @@ export class StoreEffects{
         ofType(getData),
         exhaustMap(()=> this.dataService.onGetData().pipe(
             map((data:any)=>{
-                return getDataSuccess({data})})
-        ))
-
+                return getDataSuccess({data})}),
+    
+        )) ,
+        // switchMap((res)=>[
+        //     getJsonData()
+        // ])
+        
     )
     )
+    getJsonData$:Observable<Action> = createEffect(()=>{
+       return this.actions$.pipe(
+            ofType(getJsonData),
+            exhaustMap(()=> this.dataService.onGetJsonData().pipe(
+                map((data:any)=>{
+                    console.log(data, "effect triggered")
+                    return getJsonDataSuccess({data})
+                })
+            ))
+        )
+    })
 
 //     getVehicleCount$: Observable<Action> = createEffect(() =>
 //     this.actions$.pipe(

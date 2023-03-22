@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreEffects } from './store/effects/store.effects';
 
-import {cartReducer, storeReducer} from './store/reducers/store.reducer';
+import {cartReducer, dropdownReducer, storeReducer} from './store/reducers/store.reducer';
 import { CartComponent } from './components/cart/cart.component'
 
 
@@ -19,15 +19,16 @@ import { CartComponent } from './components/cart/cart.component'
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent,
+  
     CartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({store:storeReducer, cart:cartReducer}),
+    StoreModule.forRoot({store:storeReducer, cart:cartReducer, dropDowm:dropdownReducer}),
     HttpClientModule,
     EffectsModule.forRoot([StoreEffects]),
+    FooterComponent
     
   ],
   providers: [],

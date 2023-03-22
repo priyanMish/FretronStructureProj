@@ -1,7 +1,7 @@
 import { Component, OnInit , Input, AfterViewInit} from '@angular/core';
 import { Store } from '@ngrx/store';
 import {DataService} from '../../../data.service'
-import { getData } from 'src/app/store/actions/store.action';
+import { getData ,getJsonData} from 'src/app/store/actions/store.action';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,12 +21,14 @@ export class DashboardContainerComponent implements OnInit , AfterViewInit {
   displayData:any = []
 
   subscribedData:any = this.storeData$.subscribe((data)=>{
+    console.log(data, "dataaaaaaaa")
     this.dataArr = data
     this.displayData = [...this.dataArr]
   })
   ngOnInit(): void {
 
     this.getDataFromServer()
+
     }
     ngAfterViewInit(): void {
     
@@ -42,5 +44,7 @@ export class DashboardContainerComponent implements OnInit , AfterViewInit {
 
   getDataFromServer(){
     this.store.dispatch(getData())
+    // 
   }
+  
 }
