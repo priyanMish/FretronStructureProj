@@ -43,10 +43,11 @@ export class LazyLoadListComponent implements OnInit, AfterViewInit{
         let per = Math.floor((target.scrollTop / target.scrollHeight) * 100);
         console.log(per,"per")
         if (per > 15) {
-           this.offset = this.lazyData.length/20
-           console.log(this.offset)
+          //  this.offset = this.lazyData.length/20
+          //  console.log(this.offset)
         //  this.lazyData = [...this.lazyData,...this.asyncData.slice(this.offset+20,(this.lazyData.length-1 + 20))]
-         this.lazyData = [...this.lazyData,...this.asyncData.slice(this.asyncData.length-1,(this.lazyData.length-1 + 20))]
+        
+         this.lazyData = [...this.lazyData,...this.asyncData.slice(this.lazyData.length-1,(this.lazyData.length-1 + 20))]
         }
       });
   }
