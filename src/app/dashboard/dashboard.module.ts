@@ -29,7 +29,8 @@ import {MatButtonModule} from '@angular/material/button'
     MatButtonModule
   ],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    DashboardCardsComponent
   ],
   providers:[]
   

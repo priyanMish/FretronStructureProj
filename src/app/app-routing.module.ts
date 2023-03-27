@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LazyLoadListComponent } from './components/lazy-load-list/lazy-load-list.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path:'footer',
     component:FooterComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'lazyLoad',
+    component:LazyLoadListComponent,
     pathMatch:'full'
   }
 

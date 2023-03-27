@@ -21,7 +21,7 @@ export class LazyLoadListComponent implements OnInit, AfterViewInit{
     subscribedData$ = this.storeData.subscribe((data)=>{
       this.asyncData = data
       
-      this.lazyData = this.asyncData.slice(this.offset,30)
+      this.lazyData = this.asyncData.slice(this.offset,20)
       console.log(this.lazyData.length, "length")
     })
 
@@ -42,9 +42,11 @@ export class LazyLoadListComponent implements OnInit, AfterViewInit{
       ).subscribe((target: any) => {
         let per = Math.floor((target.scrollTop / target.scrollHeight) * 100);
         console.log(per,"per")
-        if (per > 40) {
-         this.lazyData = [...this.lazyData,...this.asyncData.slice(this.lazyData.length-1,(this.lazyData.length-1 + 20))]
-         console.log(this.lazyData)
+        if (per > 15) {
+           this.offset = this.lazyData.length/20
+           console.log(this.offset)
+        //  this.lazyData = [...this.lazyData,...this.asyncData.slice(this.offset+20,(this.lazyData.length-1 + 20))]
+         this.lazyData = [...this.lazyData,...this.asyncData.slice(this.asyncData.length-1,(this.lazyData.length-1 + 20))]
         }
       });
   }

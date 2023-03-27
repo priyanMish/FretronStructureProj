@@ -10,8 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreEffects } from './store/effects/store.effects';
 
-import {cartReducer, dropdownReducer, storeReducer} from './store/reducers/store.reducer';
-import { CartComponent } from './components/cart/cart.component'
+import {cartReducer, dropdownReducer, lazyList, storeReducer} from './store/reducers/store.reducer';
+import { CartComponent } from './components/cart/cart.component';
+import { LazyLoadListComponent } from './components/lazy-load-list/lazy-load-list.component'
 
 
 
@@ -20,12 +21,13 @@ import { CartComponent } from './components/cart/cart.component'
     AppComponent,
     NavbarComponent,
   
-    CartComponent
+    CartComponent,
+       LazyLoadListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({store:storeReducer, cart:cartReducer, dropDowm:dropdownReducer}),
+    StoreModule.forRoot({store:storeReducer, cart:cartReducer, dropDowm:dropdownReducer, lazyList:lazyList}),
     HttpClientModule,
     EffectsModule.forRoot([StoreEffects]),
     FooterComponent

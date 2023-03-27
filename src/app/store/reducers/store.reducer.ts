@@ -1,4 +1,4 @@
-import { getData,getDataSuccess ,getDataFailure, addToCart, deleteFromCart,getJsonDataSuccess} from "../actions/store.action";
+import { getData,getDataSuccess ,getDataFailure, addToCart, deleteFromCart,getJsonDataSuccess,getLazyListSuccess} from "../actions/store.action";
 import { createReducer,on } from "@ngrx/store";
 import { binarySearch } from "./functions";
 
@@ -7,6 +7,13 @@ import { binarySearch } from "./functions";
 
 
 export const initialState:any = []
+export const cartState:any =[] 
+export const lazyListState:any=[]
+
+
+
+
+
 
 export const storeReducer = createReducer(
     initialState,
@@ -23,7 +30,7 @@ export const dropdownReducer = createReducer(
     on(getJsonDataSuccess,(state,{data})=> [...data]) 
 ) 
 
-export const cartState:any =[] 
+
 export const cartReducer = createReducer(
     cartState,
     on(addToCart,(state,{item})=>{
@@ -73,4 +80,12 @@ export const cartReducer = createReducer(
            
         
     })
+)
+
+
+export const lazyList = createReducer(
+    lazyListState,
+     on(getLazyListSuccess,(state,{data})=>{
+        return [...data]
+     })
 )

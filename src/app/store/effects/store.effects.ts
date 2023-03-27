@@ -4,7 +4,7 @@ import { Observable, of, forkJoin } from "rxjs";
 import { Action } from "@ngrx/store";
 import { switchMap, map, catchError, tap ,exhaustMap} from "rxjs/operators";
 import { DataService } from "src/app/data.service";
-import { getData,getDataSuccess,getDataFailure,getJsonData,getJsonDataSuccess } from "../actions/store.action";
+import { getData,getDataSuccess,getDataFailure,getJsonData,getJsonDataSuccess,getLazyList,getLazyListSuccess } from "../actions/store.action";
 
 
 @Injectable()
@@ -22,9 +22,6 @@ export class StoreEffects{
                 return getDataSuccess({data})}),
     
         )) ,
-        // switchMap((res)=>[
-        //     getJsonData()
-        // ])
         
     )
     )
@@ -40,23 +37,15 @@ export class StoreEffects{
         )
     })
 
-//     getVehicleCount$: Observable<Action> = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(VehicleActionTypes.FETCH_VEHICLE),
-//       switchMap((action: any) =>
-//         this.vehicleService.getVehicleList(action.payload, true).pipe(
-//           map((action: any) =>
-//             action["status"] == 200
-//               ? new VehicleCountSuccessAction(action.data)
-//               : new VehicleCountFailedAction(action.error)
-//           ),
-//           catchError((_) =>
-//             of(new VehicleCountFailedAction("Unexpected error occurred"))
-//           )
-//         )
-//       )
-//     )
-//   );
-
+    getLazyData$:Observable<Action> = createEffect(()=>{
+        return this.actions$.pipe(
+            ofType(getLazyList),
+            exhaustMap(()=>this.dataService.onGetJsonData().pipe(
+                map((data:any)=>{
+                    return getLazyListSuccess({data})
+                })
+            ))
+        )
+    })
 
 }

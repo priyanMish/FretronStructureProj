@@ -21,7 +21,6 @@ export class DashboardContainerComponent implements OnInit , AfterViewInit {
   displayData:any = []
 
   subscribedData:any = this.storeData$.subscribe((data)=>{
-    console.log(data, "dataaaaaaaa")
     this.dataArr = data
     this.displayData = [...this.dataArr]
   })
