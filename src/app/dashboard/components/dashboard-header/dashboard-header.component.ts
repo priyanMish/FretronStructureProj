@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output ,Input, ViewChild} from '@angular/core';
-import { BehaviorSubject, debounceTime, distinctUntilChanged ,exhaustMap,fromEvent,switchMap, map} from 'rxjs';
+import { BehaviorSubject, debounceTime, distinctUntilChanged ,exhaustMap,fromEvent,switchMap, map, Subscription} from 'rxjs';
 import { __asyncValues } from 'tslib';
 
 @Component({
@@ -10,10 +10,8 @@ import { __asyncValues } from 'tslib';
 export class DashboardHeaderComponent implements OnInit , OnDestroy, AfterViewInit{
    
   @Output() searchValue = new EventEmitter<any>()
-
-  searchInput = new BehaviorSubject<any>(null)
   @ViewChild('searchField') searchField: ElementRef | any;
-
+  subscription$:Subscription = new Subscription()
 
   constructor(){
 
@@ -33,6 +31,7 @@ export class DashboardHeaderComponent implements OnInit , OnDestroy, AfterViewIn
 
   ngAfterViewInit(): void {
     try{
+      this.subscription$.add(
       fromEvent(this.searchField.nativeElement,'keyup').pipe(
         map((e: any) => e.target.value),
         debounceTime(1500),
@@ -42,7 +41,7 @@ export class DashboardHeaderComponent implements OnInit , OnDestroy, AfterViewIn
             console.log(event, "searchFromEvent")
             this.searchValue.emit(event)
           })
-      )
+      ))
     } catch (error) {
       console.log(error)
     }
@@ -51,6 +50,8 @@ export class DashboardHeaderComponent implements OnInit , OnDestroy, AfterViewIn
 
   ngOnDestroy(): void {
     // this.searchInput.unsubscribe()
+    this.subscription$.unsubscribe()
+
   }
 
   onSearchChange(event:any){
